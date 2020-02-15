@@ -6,11 +6,11 @@ namespace Backupper
     {
         static void Main(string[] args)
         {
-            ILogger log = new ConsoleLogger(LogLevel.Info | LogLevel.Error);
+            ILogger log = new ConsoleLogger(LogLevel.Standart);
 
-            log.Info("Информация");
-            log.Error("Ошибка");
-            log.Debug("Дебаг");
+            Backupper.DoWork(log, @"D:\c#_projects\Backupper\Backupper", @"C:\Users\anton\Desktop\test_papka", continueOnError: true, overwriteFiles: true);
+
+            System.Console.ReadKey();
         }
     }
 }

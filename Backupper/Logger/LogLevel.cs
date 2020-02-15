@@ -6,9 +6,11 @@ namespace Backupper.Logger
     enum LogLevel
     {
         None = 0,
-        Info = 1,
-        Error = 2,
-        Debug = 4,
-        All = Info | Error | Debug
+        Status = 1,
+        Info = 2,
+        Error = 4,
+        Debug = 8,
+        All = Status | Info | Error | Debug,
+        Standart = Status | Info | Error,
     }
 }

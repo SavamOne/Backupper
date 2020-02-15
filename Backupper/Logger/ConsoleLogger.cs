@@ -1,10 +1,13 @@
 ﻿using System;
 
+
 namespace Backupper.Logger
 {
     class ConsoleLogger : ILogger
     {
-        private ConsoleColor DefaultColor { get; }
+        private ConsoleColor StatusColor { get; }
+
+        private ConsoleColor InfoColor { get; }
 
         private ConsoleColor ErrorColor { get; }
 
@@ -12,11 +15,12 @@ namespace Backupper.Logger
 
         public LogLevel Level { get; set; }
 
-        public ConsoleLogger(LogLevel level = LogLevel.Info)
+        public ConsoleLogger(LogLevel level = LogLevel.Status)
         {
-            DefaultColor = ConsoleColor.White;
-            ErrorColor = ConsoleColor.Red;
-            DebugColor = ConsoleColor.Blue;
+            StatusColor = ConsoleColor.Gray;
+            ErrorColor = ConsoleColor.DarkRed;
+            DebugColor = ConsoleColor.DarkMagenta;
+            InfoColor = ConsoleColor.DarkGreen;
 
             Level = level;
         }
@@ -30,6 +34,15 @@ namespace Backupper.Logger
             }
         }
 
+        public void Info(string message)
+        {
+            if (Level.HasFlag(LogLevel.Info))
+            {
+                Console.ForegroundColor = InfoColor;
+                Console.WriteLine($"[Info]  : {message}");
+            }
+        }
+
         public void Error(string message)
         {
             if (Level.HasFlag(LogLevel.Error))
@@ -39,12 +52,12 @@ namespace Backupper.Logger
             }
         }
 
-        public void Info(string message)
+        public void Status(string message)
         {
-            if(Level.HasFlag(LogLevel.Info))
+            if(Level.HasFlag(LogLevel.Status))
             {
-                Console.ForegroundColor = DefaultColor;
-                Console.WriteLine($"[Info]  : {message}");
+                Console.ForegroundColor = StatusColor;
+                Console.WriteLine($"[Status]  : {message}");
             }
         }
     }
