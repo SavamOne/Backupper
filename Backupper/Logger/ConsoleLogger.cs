@@ -3,11 +3,11 @@
 
 namespace Backupper.Logger
 {
-    class ConsoleLogger : ILogger
+    public class ConsoleLogger : ILogger
     {
-        private ConsoleColor StatusColor { get; }
-
         private ConsoleColor InfoColor { get; }
+
+        private ConsoleColor PercentsColor { get; }
 
         private ConsoleColor ErrorColor { get; }
 
@@ -15,17 +15,17 @@ namespace Backupper.Logger
 
         public LogLevel Level { get; set; }
 
-        public ConsoleLogger(LogLevel level = LogLevel.Status)
+        public ConsoleLogger(LogLevel level = LogLevel.Percents)
         {
-            StatusColor = ConsoleColor.Gray;
+            InfoColor = ConsoleColor.Gray;
             ErrorColor = ConsoleColor.DarkRed;
             DebugColor = ConsoleColor.DarkMagenta;
-            InfoColor = ConsoleColor.DarkGreen;
+            PercentsColor = ConsoleColor.DarkGreen;
 
             Level = level;
         }
 
-        public void Debug(string message)
+        public virtual void Debug(string message)
         {
             if(Level.HasFlag(LogLevel.Debug))
             {
@@ -34,16 +34,16 @@ namespace Backupper.Logger
             }
         }
 
-        public void Info(string message)
+        public virtual void Percents(string message)
         {
-            if (Level.HasFlag(LogLevel.Info))
+            if (Level.HasFlag(LogLevel.Percents))
             {
-                Console.ForegroundColor = InfoColor;
-                Console.WriteLine($"[Info]  : {message}");
+                Console.ForegroundColor = PercentsColor;
+                Console.WriteLine($"[Percents] : {message}");
             }
         }
 
-        public void Error(string message)
+        public virtual void Error(string message)
         {
             if (Level.HasFlag(LogLevel.Error))
             {
@@ -52,12 +52,12 @@ namespace Backupper.Logger
             }
         }
 
-        public void Status(string message)
+        public virtual void Info(string message)
         {
-            if(Level.HasFlag(LogLevel.Status))
+            if(Level.HasFlag(LogLevel.Info))
             {
-                Console.ForegroundColor = StatusColor;
-                Console.WriteLine($"[Status]  : {message}");
+                Console.ForegroundColor = InfoColor;
+                Console.WriteLine($"[Info] : {message}");
             }
         }
     }

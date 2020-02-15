@@ -3,14 +3,14 @@
 namespace Backupper.Logger
 {
     [Flags]
-    enum LogLevel
+    public enum LogLevel
     {
         None = 0,
-        Status = 1,
-        Info = 2,
-        Error = 4,
+        Info = 1,
+        Error = 2,
+        Percents = 4,
         Debug = 8,
-        All = Status | Info | Error | Debug,
-        Standart = Status | Info | Error,
+        All = Percents | Info | Error | Debug,
+        Standart =  Info | Error,
     }
 }
