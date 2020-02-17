@@ -55,7 +55,7 @@
     <Compile Include="Worker\BackupWorkerCheckDirectories.cs" />
     <Compile Include="Worker\BackupWorkerCreateDirectory.cs" />
     <Compile Include="Worker\BackupWorkerCopyFile.cs" />
-    <Compile Include="Worker\BackupWorkerRecursiveСopying.cs" />
+    <Compile Include="Worker\BackupWorkerRecursiveCopying.cs" />
     <Compile Include="Config\Config.cs" />
     <Compile Include="Config\DirectoriesPaths.cs" />
   </ItemGroup>

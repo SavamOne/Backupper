@@ -51,9 +51,13 @@ namespace Backupper.Worker
                 if (!dirCreated && !continueOnError)
                     return false;
 
-                subDirCreated = RecursiveCopying(logger, subDirFrom, subDirTo, continueOnError, overwriteFiles);
-                if (!subDirCreated && !continueOnError)
-                    return false;
+                if(dirCreated)
+                {
+                    subDirCreated = RecursiveCopying(logger, subDirFrom, subDirTo, continueOnError, overwriteFiles);
+                    if (!subDirCreated && !continueOnError)
+                        return false;
+                }
+
             }
             return true;
         }

@@ -17,6 +17,8 @@ namespace Backupper.Worker
                     logger.Debug($"Файл {fileTo} уже существует.");
                     return true;
                 }
+                
+                bool isOk = true;
 
                 FileStream fileFromStream = null,
                            fileToStream = null;
@@ -46,10 +48,12 @@ namespace Backupper.Worker
                 catch (UnauthorizedAccessException)
                 {
                     logger.Error($"Файл {fileFrom} не удалось скопировать. Отсутствует разрешение.");
+                    isOk = false;
                 }
                 catch (Exception e)
                 {
                     logger.Error($"Файл {fileFrom} не удалось скопировать. {e.Message}");
+                    isOk = false;
                 }
                 finally
                 {
@@ -59,7 +63,7 @@ namespace Backupper.Worker
                     writer?.Dispose();
                 }
 
-                return true;
+                return isOk;
             }
         }
     }

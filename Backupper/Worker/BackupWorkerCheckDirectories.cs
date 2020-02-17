@@ -1,13 +1,14 @@
 ﻿using Backupper.Logger;
 using System.IO;
 
-namespace Backupper
+namespace Backupper.Worker
 {
     public static partial class BackupWorker
     {
         private static bool CheckDirectories(ILogger logger, string dirFrom, string dirTo)
         {
             logger.Debug($"Проверка директорий.");
+
 
             if (dirFrom == null)
             {
@@ -35,6 +36,13 @@ namespace Backupper
                     return false;
             }
 
+            dirFrom = Path.GetFullPath(dirFrom);
+            dirTo = Path.GetFullPath(dirTo);
+            if (dirTo.StartsWith($"{dirFrom}\\"))
+            {
+                logger.Error($"Директрия {dirTo} является поддиректорией {dirFrom}.");
+                return false;
+            }
 
             return true;
         }
