@@ -1,0 +1,11 @@
+{
+	"overwrite_files" : false,
+	"continue_on_error" : true,
+	"log_level": "All",
+	"directories": [
+	    {
+			"from": "\\testDir",
+			"to": "D:\\testDir2"
+		},
+	]
+}

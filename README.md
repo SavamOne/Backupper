@@ -15,9 +15,9 @@
 ### Пример *config.json*
 ```json
 {
-	"overwrite_files" : XXX,
-	"continue_on_error" : XXX,
-	"log_level": "YYY",
+	"overwrite_files" : true/false,
+	"continue_on_error" : true/false,
+	"log_level": "LogLevelValue",
 	"directories": [
 	    {
 			"from": "PATH",

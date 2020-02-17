@@ -46,6 +46,13 @@ namespace Backupper.Worker
 
             dirFrom = Path.GetFullPath(dirFrom);
             dirTo = Path.GetFullPath(dirTo);
+
+            if(string.Compare(dirFrom, dirTo) == 0)
+            {
+                logger.Error($"Директории совпадают");
+                return false;
+            }
+
             if (dirTo.StartsWith($"{dirFrom}\\"))
             {
                 logger.Error($"Директрия {dirTo} является поддиректорией {dirFrom}.");
