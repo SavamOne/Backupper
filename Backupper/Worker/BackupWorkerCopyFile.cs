@@ -6,6 +6,15 @@ namespace Backupper.Worker
 {
     public static partial class BackupWorker
     {
+        /// <summary>
+        /// Выполняет копирование файла при помощи FileStream и BinaryReader/Writer.
+        /// Если LogLevel логгера содержит флаг Percents, выводится отношение скопированности файла в процентах.
+        /// </summary>
+        /// <param name="logger">Объект типа логгер для ведения процесса копирования</param>
+        /// <param name="fileFrom">Путь к файлу, который надо скопировать</param>
+        /// <param name="fileTo">Пупть к файлу, в который надо скопировать</param>
+        /// <param name="overwriteFiles">Перезаписывать файл, если существует</param>
+        /// <returns>true - если копирование пройдено успешно</returns>
         private static bool CopyFile(ILogger logger, string fileFrom, string fileTo, bool overwriteFiles)
         {
             lock (Locker)

@@ -5,6 +5,14 @@ namespace Backupper.Worker
 {
     public static partial class BackupWorker
     {
+        /// <summary>
+        /// Проверка директорий на корректность - проверяет на null, существование и на то, не является ли dirTo поддиректорией dirFrom,
+        /// чтобы не происходило рекурсивного копирования dirFrom
+        /// </summary>
+        /// <param name="logger">Объект типа логгер для ведения процесса проверки</param>
+        /// <param name="dirFrom">Директория, которую надо скопировать</param>
+        /// <param name="dirTo">Директория, в которую надо скопировать</param>
+        /// <returns>true - если проверка пройдена.</returns>
         private static bool CheckDirectories(ILogger logger, string dirFrom, string dirTo)
         {
             logger.Debug($"Проверка директорий.");

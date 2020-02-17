@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace Backupper.Сonfig
 {
+    /// <summary>
+    /// Класс для десериализации конфига. 
+    /// По умолчанию продолжать после ошибки, файлы не перезаписывать, уровень логирования Standart
+    /// </summary>
     public class Config
     {
         [JsonProperty("overwrite_files")]

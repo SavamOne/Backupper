@@ -3,6 +3,10 @@ using System.IO;
 
 namespace Backupper.Logger
 {
+    /// <summary>
+    /// Файловый логгер. Выводит информацию в консоли и записывает ее в файл с именем log{x}.txt
+    /// Реализует IDisposable, так как для работы использует StreamWriter, который необходимо после окончания процесса логгирования освобождать
+    /// </summary>
     public class FileLogger : ConsoleLogger, IDisposable
     {
         StreamWriter Writer { get; }

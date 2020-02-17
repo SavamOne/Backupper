@@ -11,23 +11,27 @@ namespace Backupper
     {
         static void Main(string[] args)
         {
-            ILogger logger = new ConsoleLogger(LogLevel.Error);
+            ///Если не удаcтся прочитать конфиг, вывести эту ошибки в консоли.
+            ILogger logger = new ConsoleLogger(LogLevel.Error); 
             try
             {
+                ///Чтение и десереализация конфига
                 string json = File.ReadAllText("config.json");
                 Config config = JsonConvert.DeserializeObject<Config>(json);
 
                 logger = new FileLogger(config.Level);
 
+
                 using(logger as IDisposable)
                 {
+                    ///Для каждого пути выполнить копирование
                     foreach (var directories in config.Directories)
                     {
                         BackupWorker.DoWork(logger,
-                                             directories.DirectoryFrom,
-                                             directories.DirectoryTo,
-                                             continueOnError: config.ContinueOnError,
-                                             overwriteFiles: config.OverwriteFiles);
+                                            directories.DirectoryFrom,
+                                            directories.DirectoryTo,
+                                            continueOnError: config.ContinueOnError,
+                                            overwriteFiles: config.OverwriteFiles);
                     }
                 }
             }

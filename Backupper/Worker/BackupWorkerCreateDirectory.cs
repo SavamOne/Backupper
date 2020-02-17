@@ -6,6 +6,12 @@ namespace Backupper.Worker
 {
     public static partial class BackupWorker
     {
+        /// <summary>
+        /// Создание директории
+        /// </summary>
+        /// <param name="logger">Объект типа логгер для ведения процесса создания</param>
+        /// <param name="dir">Путь к директории, которая должна создаться</param>
+        /// <returns>true - если cоздание пройдено успешно.</returns>
         private static bool CreateDirectory(ILogger logger, string dir)
         {
             logger.Debug($"Создание директории {dir}.");

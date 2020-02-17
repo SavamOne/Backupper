@@ -6,6 +6,16 @@ namespace Backupper.Worker
 {
     public static partial class BackupWorker
     {
+        /// <summary>
+        /// Копирование файлов и файлов внутри директорий. Производит копирование файлов в этойдиректории, затем создание директорий внутри этой директории
+        /// и рекурсивный вызов себя для копирования файлов из директорий внутри директорий.
+        /// </summary>
+        /// <param name="logger">Объект типа логгер для ведения процесса копирования</param>
+        /// <param name="dirFrom">Директория, которую надо скопировать</param>
+        /// <param name="dirTo">Директория, в которую надо скопировать</param>
+        /// <param name="continueOnError">Продолжать процесс, если произошла какая-либо ошибка</param>
+        /// <param name="overwriteFiles">Перезаписывать файл, если существует</param>
+        /// <returns>true - если cоздание пройдено успешно или флаг continueOnError - true.</returns>
         private static bool RecursiveCopying(ILogger logger, string dirFrom, string dirTo, bool continueOnError, bool overwriteFiles)
         {
             string[] subDirsFrom, filesFrom;

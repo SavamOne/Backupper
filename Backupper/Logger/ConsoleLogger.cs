@@ -3,6 +3,9 @@
 
 namespace Backupper.Logger
 {
+    /// <summary>
+    /// Консольный логгер. Выводит информацию в консоли. В зависимости от типа лога имеет разный цвет.
+    /// </summary>
     public class ConsoleLogger : ILogger
     {
         private ConsoleColor InfoColor { get; }

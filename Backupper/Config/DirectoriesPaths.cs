@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 
 namespace Backupper.Сonfig
 {
+    /// <summary>
+    /// Класс для десериализации путей копивования
+    /// </summary>
     public class DirectoriesPaths
     {
         [JsonProperty("from")]

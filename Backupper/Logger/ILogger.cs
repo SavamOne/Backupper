@@ -1,5 +1,8 @@
 ﻿namespace Backupper.Logger
 {
+    /// <summary>
+    /// Интерфейс логгера - содержит свойство уровня логгирования, а так же методы в зависимости от уровня логгирования.
+    /// </summary>
     public interface ILogger
     {
         LogLevel Level { get; set; }
