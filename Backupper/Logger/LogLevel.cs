@@ -33,7 +33,7 @@ namespace Backupper.Logger
         /// </summary>
         All = Percents | Info | Error | Debug,
         /// <summary>
-        /// Standart - выводить только Info и Eror.
+        /// Standart - выводить только Info и Error.
         /// </summary>
         Standart =  Info | Error
     }
